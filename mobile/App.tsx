@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import { HomeScreen } from './src/screens/HomeScreen';
+import { registerForPushNotifications } from './src/services';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,6 +23,10 @@ function App(): React.JSX.Element {
 
 function AppContent(): React.JSX.Element {
   const safeAreaInsets = useSafeAreaInsets();
+
+  useEffect(() => {
+    registerForPushNotifications();
+  }, []);
 
   return (
     <View

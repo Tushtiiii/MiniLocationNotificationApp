@@ -7,6 +7,7 @@ dotenv.config();
 
 // Route imports
 const healthRoutes = require('./routes/health.routes');
+const statusRoutes = require('./routes/status.routes');
 const locationRoutes = require('./routes/locationRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 
@@ -15,6 +16,9 @@ const app = express();
 // Global middleware
 app.use(cors());
 app.use(express.json());
+
+// Root-level status routes
+app.use('/', statusRoutes);
 
 // API routes
 app.use('/api', healthRoutes);

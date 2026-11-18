@@ -5,3 +5,4 @@
  */
 
 export * from './locationService';
+export * from './notificationService';
